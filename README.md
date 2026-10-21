@@ -25,7 +25,7 @@ Then fill in `.env`:
 ### 2. Run
 
 ```bash
-go run .
+go run ./cmd/frodo-bot
 ```
 
 ### 3. Supported Commands

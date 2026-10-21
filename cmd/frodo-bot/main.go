@@ -7,6 +7,8 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/SimonKimDev/frodo-bot/internal/bot"
+	"github.com/SimonKimDev/frodo-bot/internal/config"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -17,7 +19,7 @@ func main() {
 }
 
 func run() error {
-	cfg, err := loadConfig()
+	cfg, err := config.Load()
 	if err != nil {
 		return fmt.Errorf("config failed: %w", err)
 	}
@@ -27,11 +29,8 @@ func run() error {
 		return fmt.Errorf("bot failed to init: %w", err)
 	}
 
-	bot := newBot(cfg)
-	discord.AddHandler(bot.onReady)
-	discord.AddHandler(bot.onMessage)
-
-	discord.Identify.Intents = discordgo.IntentsMessageContent | discordgo.IntentsGuildMessages
+	b := bot.New(cfg)
+	b.Register(discord)
 
 	// open session
 	err = discord.Open()

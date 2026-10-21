@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"errors"
@@ -13,7 +13,7 @@ type Config struct {
 	GIFURL string
 }
 
-func loadConfig() (Config, error) {
+func Load() (Config, error) {
 	if err := godotenv.Load(); err != nil {
 		log.Printf(".env file is missing, using environment variable")
 	}
