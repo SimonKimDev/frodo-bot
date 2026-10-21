@@ -1,4 +1,4 @@
-module frodo-bot
+module github.com/SimonKimDev/frodo-bot
 
 go 1.26.1
 
