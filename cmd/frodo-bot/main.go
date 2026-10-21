@@ -24,22 +24,22 @@ func run() error {
 		return fmt.Errorf("config failed: %w", err)
 	}
 
-	discord, err := discordgo.New("Bot " + cfg.Token)
+	session, err := discordgo.New("Bot " + cfg.Token)
 	if err != nil {
 		return fmt.Errorf("bot failed to init: %w", err)
 	}
 
 	b := bot.New(cfg)
-	b.Register(discord)
+	b.Register(session)
 
 	// open session
-	err = discord.Open()
+	err = session.Open()
 	if err != nil {
 		return fmt.Errorf("failed to open discord session: %w", err)
 	}
 
 	// executes after run returns
-	defer discord.Close()
+	defer session.Close()
 
 	fmt.Println("bot is running")
 	c := make(chan os.Signal, 1)

@@ -12,6 +12,10 @@ func (b *Bot) onMessage(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	if b.wounds.IsStabbed(m.GuildID) {
+		return
+	}
+
 	if !shouldReply(m.Content) {
 		return
 	}
@@ -21,6 +25,7 @@ func (b *Bot) onMessage(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 }
 
+// shouldReply reports whether to post the meme or not.
 func shouldReply(content string) bool {
 	return strings.Contains(strings.ToLower(content), "secret")
 }
