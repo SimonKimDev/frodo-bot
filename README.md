@@ -30,7 +30,9 @@ go run ./cmd/frodo-bot
 
 ### 3. Supported Commands
 
-nothing yet
+| Command       | Description                                                         |
+| ------------- | ------------------------------------------------------------------- |
+| /morgul-blade | Stab Frodo with the cursed Morgul blade to silence him indefinitely |
 
 Press `Ctrl+C` to stop.
 
