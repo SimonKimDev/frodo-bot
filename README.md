@@ -3,11 +3,26 @@
 A Discord bot that does one thing: whenever someone says "secret",
 bot replies with "Alright then, keep your secrets."
 
-## Setup
+## Add Frodo to your server
+
+**[Invite Frodo](https://discord.com/oauth2/authorize?client_id=1561964364746195014&permissions=84992&integration_type=0&scope=bot+applications.commands)**
+
+This is a hosted instance that always runs the latest `main` of this repo, so there's nothing to set up.
+If you'd rather run your own, see [Self-hosting](#self-hosting).
+
+## Commands
+
+| Command       | Description                                                         |
+| ------------- | ------------------------------------------------------------------- |
+| /morgul-blade | Stab Frodo with the cursed Morgul blade to silence him indefinitely |
+
+## Self-hosting
 
 ### Pre-Requisite
 
-Only the self hosting is supported atm. You'd need to register your own bot on discord dev portal.
+Register your own bot on the [Discord Developer Portal](https://discord.com/developers/applications),
+and enable **Message Content Intent** in its Bot tab. Invite it with the `bot` and
+`applications.commands` scopes.
 
 ### 1. Configure
 
@@ -28,11 +43,12 @@ Then fill in `.env`:
 go run ./cmd/frodo-bot
 ```
 
-### 3. Supported Commands
+Or with Docker:
 
-| Command       | Description                                                         |
-| ------------- | ------------------------------------------------------------------- |
-| /morgul-blade | Stab Frodo with the cursed Morgul blade to silence him indefinitely |
+```bash
+docker build -t frodo-bot .
+docker run --rm --env-file .env frodo-bot
+```
 
 Press `Ctrl+C` to stop.
 
